@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="jquery.js"></script>
+<style>
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    position: realtive;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #1e1e1e;
+    background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 50%, transparent 100%), -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 50%, transparent 100%), -webkit-radial-gradient(#282828, #1e1e1e);
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 50%, transparent 100%), linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 50%, transparent 100%), radial-gradient(#282828, #1e1e1e);
+    background-size: 4rem 4rem, 4rem 4rem, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat;
+    background-position: 50% 50%;
+    -webkit-transition: background-size 0.3s;
+    transition: background-size 0.3s;
+}
+@media (max-width: 40rem) {
+    body {
+        background-size: 3rem 3rem, 3rem 3rem, 100% 100%;
+    }
+}
+@media (max-width: 22rem) {
+    body {
+        background-size: 2rem 2rem, 2rem 2rem, 100% 100%;
+    }
+}
+.stage {
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
+    height: 100%;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-perspective: 300;
+    perspective: 300;
+    overflow: hidden;
+}
+.core {
+    position: relative;
+    margin: 0 auto;
+    top: 50%;
+    width: 50%;
+    padding-bottom: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0) 40%, #fff), -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), -webkit-radial-gradient(#fff 10%, rgba(0, 0, 0, 0) 50%);
+    background-image: radial-gradient(rgba(0, 0, 0, 0) 40%, #fff), linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), radial-gradient(#fff 10%, rgba(0, 0, 0, 0) 50%);
+    background-size: 120% 120%, 100% 100%, 60% 60%;
+    background-position: 0 0, 50% 50%, 50% 50%;
+    background-repeat: no-repeat;
+    box-shadow: 5rem 5rem 8rem rgba(0, 0, 0, 0.5), 0 0 5rem rgba(255, 255, 255, 0.8);
+}
+.core,
+.trabant {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.trabant {
+    position: absolute;
+    top: 50%;
+    left: -16%;
+    right: -16%;
+    margin-top: -5%;
+    padding-bottom: 10%;
+}
+.trabant:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 7.5%;
+    background-color: #ff9b00;
+    border-radius: 50%;
+    box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.2), inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+}
+@-webkit-keyframes rotating {
+    0% {
+        tansform: rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateY(400grad);
+        transform: rotateY(400grad);
+    }
+}
+@keyframes rotating {
+    0% {
+        tansform: rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateY(400grad);
+        transform: rotateY(400grad);
+    }
+}
+.trabant:nth-child(1) {
+    -webkit-animation: rotating-1 1.5s -2s linear infinite;
+    animation: rotating-1 1.5s -2s linear infinite;
+}
+.trabant:nth-child(1):before {
+    -webkit-animation: rotating 1.5s -2s linear infinite reverse;
+    animation: rotating 1.5s -2s linear infinite reverse;
+}
+@-webkit-keyframes rotating-1 {
+    0% {
+        -webkit-transform: rotateZ(40grad) rotateY(0);
+        transform: rotateZ(40grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(40grad) rotateY(400grad);
+        transform: rotateZ(40grad) rotateY(400grad);
+    }
+}
+@keyframes rotating-1 {
+    0% {
+        -webkit-transform: rotateZ(40grad) rotateY(0);
+        transform: rotateZ(40grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(40grad) rotateY(400grad);
+        transform: rotateZ(40grad) rotateY(400grad);
+    }
+}
+.trabant:nth-child(2) {
+    -webkit-animation: rotating-2 4.3s -4s linear infinite;
+    animation: rotating-2 4.3s -4s linear infinite;
+}
+.trabant:nth-child(2):before {
+    -webkit-animation: rotating 4.3s -4s linear infinite reverse;
+    animation: rotating 4.3s -4s linear infinite reverse;
+}
+@-webkit-keyframes rotating-2 {
+    0% {
+        -webkit-transform: rotateZ(80grad) rotateY(0);
+        transform: rotateZ(80grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(80grad) rotateY(400grad);
+        transform: rotateZ(80grad) rotateY(400grad);
+    }
+}
+@keyframes rotating-2 {
+    0% {
+        -webkit-transform: rotateZ(80grad) rotateY(0);
+        transform: rotateZ(80grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(80grad) rotateY(400grad);
+        transform: rotateZ(80grad) rotateY(400grad);
+    }
+}
+.trabant:nth-child(3) {
+    -webkit-animation: rotating-3 1.7s -6s linear infinite;
+    animation: rotating-3 1.7s -6s linear infinite;
+}
+.trabant:nth-child(3):before {
+    -webkit-animation: rotating 1.7s -6s linear infinite reverse;
+    animation: rotating 1.7s -6s linear infinite reverse;
+}
+@-webkit-keyframes rotating-3 {
+    0% {
+        -webkit-transform: rotateZ(120grad) rotateY(0);
+        transform: rotateZ(120grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(120grad) rotateY(400grad);
+        transform: rotateZ(120grad) rotateY(400grad);
+    }
+}
+@keyframes rotating-3 {
+    0% {
+        -webkit-transform: rotateZ(120grad) rotateY(0);
+        transform: rotateZ(120grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(120grad) rotateY(400grad);
+        transform: rotateZ(120grad) rotateY(400grad);
+    }
+}
+.trabant:nth-child(4) {
+    -webkit-animation: rotating-4 2.1s -8s linear infinite;
+    animation: rotating-4 2.1s -8s linear infinite;
+}
+.trabant:nth-child(4):before {
+    -webkit-animation: rotating 2.1s -8s linear infinite reverse;
+    animation: rotating 2.1s -8s linear infinite reverse;
+}
+@-webkit-keyframes rotating-4 {
+    0% {
+        -webkit-transform: rotateZ(160grad) rotateY(0);
+        transform: rotateZ(160grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(160grad) rotateY(400grad);
+        transform: rotateZ(160grad) rotateY(400grad);
+    }
+}
+@keyframes rotating-4 {
+    0% {
+        -webkit-transform: rotateZ(160grad) rotateY(0);
+        transform: rotateZ(160grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(160grad) rotateY(400grad);
+        transform: rotateZ(160grad) rotateY(400grad);
+    }
+}
+.trabant:nth-child(5) {
+    -webkit-animation: rotating-5 4.1s -10s linear infinite;
+    animation: rotating-5 4.1s -10s linear infinite;
+}
+.trabant:nth-child(5):before {
+    -webkit-animation: rotating 4.1s -10s linear infinite reverse;
+    animation: rotating 4.1s -10s linear infinite reverse;
+}
+@-webkit-keyframes rotating-5 {
+    0% {
+        -webkit-transform: rotateZ(200grad) rotateY(0);
+        transform: rotateZ(200grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(200grad) rotateY(400grad);
+        transform: rotateZ(200grad) rotateY(400grad);
+    }
+}
+@keyframes rotating-5 {
+    0% {
+        -webkit-transform: rotateZ(200grad) rotateY(0);
+        transform: rotateZ(200grad) rotateY(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(200grad) rotateY(400grad);
+        transform: rotateZ(200grad) rotateY(400grad);
+    }
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>粒子转动效果</title>
+</head>
+
+<body>
+<div class="stage">
+    <div class="core">
+        <span class="trabant"></span>
+        <span class="trabant"></span>
+        <span class="trabant"></span>
+        <span class="trabant"></span>
+        <span class="trabant"></span>
+    </div>
+</div>
+</body>
+</html>
